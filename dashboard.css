@@ -450,16 +450,22 @@
     .dash-ht-row,
     .dash-bar,
     .dash-hm-cell {
-        transition: none;
+        transition: transform 0.14s ease-out, opacity 0.14s ease-out, background-color 0.14s ease-out, border-color 0.14s ease-out;
         box-shadow: none;
     }
 
     .dash-ht-row:hover,
     .dash-hm-cell:hover,
     .dash-bar:hover {
-        transform: none;
+        transform: translate3d(0, -1px, 0);
         box-shadow: none;
         filter: none;
+    }
+
+    .dash-ht-row:active,
+    .dash-hm-cell:active,
+    .dash-bar:active {
+        transform: translate3d(0, 1px, 0) scale(0.99);
     }
 }
 
@@ -470,6 +476,16 @@
 
     .dash-stat-card {
         padding: 16px 12px;
+    }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    .dash-stat-card,
+    .dash-card,
+    .dash-ht-row,
+    .dash-bar,
+    .dash-hm-cell {
+        transition-duration: 0.01ms;
     }
 }
 

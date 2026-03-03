@@ -2631,8 +2631,9 @@ body.professional-mode .badge {
     }
 
     .portal-card::before {
-        animation: none;
+        animation: spin-cw 18s linear infinite;
         opacity: 0.25;
+        will-change: transform;
     }
 
     .orb-icon {
@@ -2650,7 +2651,17 @@ body.professional-mode .badge {
     .portal-card:hover,
     #why-view .card:hover,
     .search-result-card:hover {
-        transform: none;
+        transform: translate3d(0, -2px, 0);
+    }
+
+    .portal-card:active,
+    #why-view .card:active,
+    .search-result-card:active,
+    .nav-btn:active,
+    .topic-btn:active,
+    #why-view .filter-btn:active,
+    #why-view .ai-btn:active {
+        transform: translate3d(0, 1px, 0) scale(0.99);
     }
 
     .portal-card,
@@ -2676,5 +2687,21 @@ body.professional-mode .badge {
     .quiz-menu-grid {
         max-height: none;
         overflow: visible;
+    }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    .portal-card::before {
+        animation: none;
+    }
+
+    .portal-card,
+    #why-view .card,
+    .search-result-card,
+    .nav-btn,
+    .topic-btn,
+    #why-view .filter-btn,
+    #why-view .ai-btn {
+        transition-duration: 0.01ms;
     }
 }

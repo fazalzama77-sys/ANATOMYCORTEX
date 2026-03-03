@@ -1441,9 +1441,12 @@ body.professional-mode .review-back-to-top {
     overflow: visible;
   }
 
-  .quiz-option.correct,
+  .quiz-option.correct {
+    animation: pulse 0.32s ease-out;
+  }
+
   .review-card {
-    animation: none;
+    animation: fadeInUp 0.24s ease-out both;
   }
 
   .quiz-modal,
@@ -1461,7 +1464,36 @@ body.professional-mode .review-back-to-top {
   .review-card,
   .review-back-to-top,
   .quiz-modal .nav-btn {
-    transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out;
+    transition: transform 0.14s ease-out, background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out;
+  }
+
+  .quiz-option:active,
+  .quiz-action-btn:active,
+  .quiz-icon-btn:active,
+  .quiz-modal .nav-btn:active {
+    transform: translate3d(0, 1px, 0) scale(0.99);
+  }
+
+  .review-back-to-top:active {
+    transform: translate3d(0, 1px, 0) scale(0.96);
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .quiz-option.correct,
+  .review-card {
+    animation: none;
+  }
+
+  .quiz-option,
+  .quiz-action-btn,
+  .quiz-icon-btn,
+  .quiz-submit-btn,
+  .question-grid-btn,
+  .review-card,
+  .review-back-to-top,
+  .quiz-modal .nav-btn {
+    transition-duration: 0.01ms;
   }
 }
 
