@@ -2399,19 +2399,50 @@ body.professional-mode .badge {
 
 /* ================= CONSOLIDATED MOBILE OVERRIDES ================= */
 @media (max-width: 768px) {
+
     html,
     body {
         max-width: 100%;
         overflow-x: hidden;
+        /* Single scroll: prevent body from creating its own scroll wrapper */
+        overflow-y: auto;
     }
 
     .view-section {
         padding: 14px;
+        /* Remove any fixed height so view flows with page */
+        height: auto !important;
+        overflow: visible !important;
     }
 
     .view-section>div {
         width: 100%;
         min-width: 0;
+        /* Remove fixed heights on inner wrapper divs */
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Atlas view: eliminate inner scroll containers */
+    #atlas-view {
+        overflow: visible !important;
+    }
+
+    #atlas-selector {
+        /* Single column on mobile, no horizontal overflow */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        overflow: visible !important;
+    }
+
+    #atlas-content {
+        /* Let atlas-content flow naturally — JS controls display (none/grid),
+           we only override height and overflow to avoid inner scroll container */
+        height: auto !important;
+        overflow: visible !important;
     }
 
     .hero-title {
@@ -2469,19 +2500,25 @@ body.professional-mode .badge {
     .workspace {
         grid-template-columns: 1fr;
         gap: 14px;
-        height: auto;
+        /* No fixed height — flow with page for single scroll */
+        height: auto !important;
         min-height: auto;
+        overflow: visible !important;
     }
 
     .sidebar {
         max-height: none;
+        /* Use a reasonable max-height with single scroll, not its own scroll */
         overflow: visible;
+        height: auto;
     }
 
     .content-area {
         padding: 18px;
         min-height: auto;
+        /* Let content flow into page scroll, not its own inner scroll */
         overflow: visible;
+        height: auto;
     }
 
     .h-title {
